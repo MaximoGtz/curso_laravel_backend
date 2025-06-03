@@ -15,6 +15,8 @@ return new class extends Migration {
             $table->string("name");
             $table->integer("stock");
             $table->float("price");
+            $table->string("description");
+            $table->softDeletes();
             $table->timestamps();
         });
     }
