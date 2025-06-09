@@ -15,10 +15,10 @@ class CheckIfAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-         $user = auth()->user();
-         if($user->role != "admin" ){
-             return response()->json(["error" => "El tipo de usuario no tiene acceso a este endpoint"], Response::HTTP_FORBIDDEN);
-            }
-            return response()->json(["Desde CheckIfAdmin" => $user, "role" => $user->role]);
+        $user = auth()->user();
+        if ($user->role != "admin") {
+            return response()->json(["error" => "El tipo de usuario no tiene acceso a este endpoint"], Response::HTTP_FORBIDDEN);
+        }
+        return response()->json(["Desde CheckIfAdmin" => $user, "role" => $user->role]);
     }
 }
