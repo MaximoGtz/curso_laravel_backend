@@ -9,7 +9,7 @@ class TestController extends Controller
     {
         return response()->json([
             "message" => "La api esta funcionando",
-            "input1" => $request->input("text")
+            "input" => $request->input("input")
         ]);
     }
 }

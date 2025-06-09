@@ -13,11 +13,13 @@ class CheckValueInHeader
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, $number, $string): Response
     {
         if ($request->header("token") !== "123456") {
             return response()->json([
                 "message" => "Acceso no permitido",
+                "number" => $number,
+                "string" => $string
 
             ], Response::HTTP_FORBIDDEN);
         }
