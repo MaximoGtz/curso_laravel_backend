@@ -31,6 +31,7 @@ class AuthController extends Controller
             'password' => $validatedData["password"]
         ];
         try {
+            // esta intentando generar el token en el mismo condicional
             if(!$token = JWTAuth::attempt($credentials)){
                 return response()->json(["error" => "Usuario o contraseña no válida,"], Response::HTTP_UNAUTHORIZED);
             }
@@ -58,7 +59,7 @@ class AuthController extends Controller
         } catch (JWTException $e) {
             return response()->json(["error" => "No se pudo cerrar la sesión, token no válido."], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
-    }
+    } 
     public function refresh(){
         try {
             $token = JWTAuth::getToken();    

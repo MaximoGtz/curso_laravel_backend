@@ -14,9 +14,9 @@ return [
     */
 
     'defaults' => [
-        /* PARA CONFIGURAR AUTH TENEMOS QUE PONER AQUI LO DE JWT */
         // 'guard' => env('AUTH_GUARD', 'web'),
         // 'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
+        /* PARA CONFIGURAR AUTH TENEMOS QUE PONER AQUI LO DE JWT */
         'guard' => 'api',
         'passwords' => 'users'
     ],

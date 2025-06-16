@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\InfoController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TestController;
 use App\Http\Middleware\CheckValueInHeader;
@@ -17,3 +18,6 @@ Route::middleware("jwt.auth")->group(function(){
     Route::post("/logout", [AuthController::class, "logout"]);
     Route::post("/refresh", [AuthController::class,"refresh"]);
 });
+Route::get("/info/message", [InfoController::class, "message"]);
+Route::get("/info/message2", [InfoController::class, "message2"]);
+Route::get("/product/tax/{id}", [InfoController::class, "taxes"]);
