@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Business\Interfaces\MessageServiceInterface;
+use App\Business\Interfaces\ProductServiceInterface;
+use App\Business\Interfaces\SalesServiceInterface;
+use App\Business\Services\EncryptService;
 use App\Business\Services\HiService;
 use App\Business\Services\ProductService;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-use function Pest\Laravel\json;
 
 class InfoController extends Controller
 {
-    public function __construct(protected ProductService $productService)
+    public function __construct(protected ProductService $productService, protected EncryptService $encryptService, protected SalesServiceInterface $salesService)
     {
         
     }
@@ -35,5 +37,15 @@ class InfoController extends Controller
             "price" => $product->price,
             "price_with_taxes" => $priceWithTaxes
         ]);
+    }
+    public function encrypt($data){
+        return response()->json($this->encryptService->encrypt($data));
+    }
+    public function decrypt($data){
+        return response()->json($this->encryptService->decrypt($data));
+    }
+    public function getProductPrice(int $id){
+        $product = Product::find($id);
+        return response()->json($this->salesService->getTotalPrice($product->price));
     }
 }

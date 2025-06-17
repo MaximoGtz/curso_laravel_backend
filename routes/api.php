@@ -4,7 +4,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TestController;
-use App\Http\Middleware\CheckValueInHeader;
 use App\Http\Middleware\CheckIfAdmin;
 use Illuminate\Support\Facades\Route;
 Route::get("/test", [TestController::class, "testFunction"])->middleware("log_request", "jwt.auth", CheckIfAdmin::class);
@@ -21,3 +20,6 @@ Route::middleware("jwt.auth")->group(function(){
 Route::get("/info/message", [InfoController::class, "message"]);
 Route::get("/info/message2", [InfoController::class, "message2"]);
 Route::get("/product/tax/{id}", [InfoController::class, "taxes"]);
+Route::get("/info/encrypt/{data}", [InfoController::class, "encrypt"]);
+Route::get("/info/decrypt/{data}", [InfoController::class, "decrypt"]);
+Route::get("/product/prices/{id}", [InfoController::class, "getProductPrice"]);

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Business\Interfaces\ProductServiceInterface;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpFoundation\Response;
+
 class ProductController extends Controller
 {
     public function index(Request $request)
@@ -70,7 +72,6 @@ class ProductController extends Controller
         } catch (Exception $e) {
             return response()->json(["error" => $e]);
         }
-
     }
     public function destroy(Product $product)
     {
