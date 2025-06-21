@@ -15,7 +15,7 @@ use App\Business\Services\SingletonService;
 use App\Business\Services\UserService;
 use App\Http\Controllers\InfoController;
 use Illuminate\Support\ServiceProvider;
-
+//para justificar el git push lol
 class AppServiceProvider extends ServiceProvider
 {
     /**
