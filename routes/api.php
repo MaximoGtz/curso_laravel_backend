@@ -7,6 +7,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Middleware\CheckIfAdmin;
 use Illuminate\Console\View\Components\Info;
 use Illuminate\Support\Facades\Route;
+//LLLARAVEL
 Route::get("/test", [TestController::class, "testFunction"])->middleware("log_request", "jwt.auth", CheckIfAdmin::class);
 // Route::apiResource("/products", ProductController::class)->middleware(["check_value_in_header:123,maximo", "to_upper", "jwt.auth"]);
 Route::apiResource("/products", ProductController::class);
