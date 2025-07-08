@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Business\Services\EncryptService;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
@@ -12,7 +13,9 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
-    public function register(UserRequest $request){
+    public function __construct(protected EncryptService $encryptService) {
+    }
+    public function register(UserRequest $request ){
         $validatedData = $request->validated();
         $user = User::create([
             'name' => $validatedData["name"],

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Business\Interfaces\ProductServiceInterface;
+use App\Business\Interfaces\CalculateProductPriceInterface;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Category;
 use App\Models\Product;
 use Exception;
 use Illuminate\Http\Request;
@@ -12,6 +13,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
 {
+    public function __construct(
+        protected CalculateProductPriceInterface $calculateProductPriceService
+        
+        ){
+
+    }
     public function index(Request $request)
     {
         $perPage = $request->query("per_page", 10);
@@ -77,5 +84,14 @@ class ProductController extends Controller
     {
         $product->delete();
         return response()->json(["message" => "Producto eliminado", "product" => $product]);
+    }
+    public function getProductPrice($product_id){
+        $product = Product::findOrFail($product_id);
+        $finalcost = $this->calculateProductPriceService->calculateProductPrice($product);
+        return response()->json([
+            "message" => "Product found!",
+            "product" => $product,
+            "finalPrice" => $finalcost
+        ]);
     }
 }

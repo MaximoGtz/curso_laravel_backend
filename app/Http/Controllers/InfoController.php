@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Business\Interfaces\CalculateProductPriceInterface;
 use App\Business\Interfaces\MessageServiceInterface;
 use App\Business\Interfaces\ProductServiceInterface;
 use App\Business\Interfaces\SalesServiceInterface;
@@ -23,7 +24,8 @@ class InfoController extends Controller
         protected SalesServiceInterface $salesService, 
         protected UserService $userService,
         protected MessageServiceInterface $messageService,
-        protected SingletonService $singletonService
+        protected SingletonService $singletonService,
+        protected CalculateProductPriceInterface $calculateProductPriceService
         )
     {
         
@@ -70,6 +72,13 @@ class InfoController extends Controller
     public function singleton(SingletonService $singleton2){
         return response()->json($this->singletonService->value." ".$singleton2->value);
 
+    }
+    public function getPartnerPrice($id){
+        $product = Product::findOrFail($id);
+        return response()->json([
+            "product" => $product,
+            "finalPrice" => $this->calculateProductPriceService->calculateProductPrice($product)
+        ]);
     }
     
 }

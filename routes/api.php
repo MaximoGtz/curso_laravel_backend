@@ -29,3 +29,5 @@ Route::get("/product/prices/{id}", [InfoController::class, "getProductPrice"]);
 Route::get("/encrypt/email/{id}", [InfoController::class, "encryptEmail"]);
 Route::get("/encrypt/email2/{id}", [InfoController::class, "encryptEmail2"]);
 Route::get("/info/singleton", [InfoController::class, "singleton"]);
+Route::get ("/getProductPrice/{product_id}", [ProductController::class, "getProductPrice"]);
+Route::get ("/getProductPrice2/{product_id}", [InfoController::class, "getPartnerPrice"]);

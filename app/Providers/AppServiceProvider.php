@@ -9,12 +9,16 @@ use App\Business\Services\EncryptService;
 use App\Business\Services\HiService;
 use App\Business\Services\HiUserService;
 use App\Business\Services\OwnerCostsService;
+use App\Business\Services\OwnerPricesService;
 use App\Business\Services\PartnerCostsService;
 use App\Business\Services\ProductService;
 use App\Business\Services\SingletonService;
 use App\Business\Services\UserService;
 use App\Http\Controllers\InfoController;
 use Illuminate\Support\ServiceProvider;
+use App\Business\Interfaces\CalculateProductPriceInterface;
+use App\Business\Services\PartnerPricesService;
+
 //para justificar el git push lol
 class AppServiceProvider extends ServiceProvider
 {
@@ -47,6 +51,13 @@ class AppServiceProvider extends ServiceProvider
             // De esta forma arroja los mismos resultados aunque se delcae varias veces en la funcion del controlador POR PETICIÓN
             return new SingletonService();
         });
+
+
+        //PRUEBAS PROPIAS
+        $this->app->bind(CalculateProductPriceInterface::class, OwnerPricesService::class);
+        $this->app->when(InfoController::class)
+            ->needs(CalculateProductPriceInterface::class)
+            ->give(PartnerPricesService::class);
     }
 
     /**
