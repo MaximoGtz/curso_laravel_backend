@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Business\Services\EncryptService;
+use App\Events\UserRegistered;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
@@ -23,6 +24,9 @@ class AuthController extends Controller
             'password' => bcrypt($validatedData["password"]),
             'role' => $validatedData["role"]
         ]);
+
+        event(new UserRegistered($user));
+        
         return response()->json([
             "message" => "Usuario registrado correctamente"
         ],Response::HTTP_CREATED);
