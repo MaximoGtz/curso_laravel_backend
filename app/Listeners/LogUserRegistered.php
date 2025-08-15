@@ -29,6 +29,7 @@ class LogUserRegistered implements ShouldQueue
     /**
      * Handle the event.
      */
+    // This handles the event
     public function handle(UserRegistered $event): void
     {
         $this->release(5);   
