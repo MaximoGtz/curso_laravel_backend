@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+// espacio del commit ""
 use App\Business\Services\EncryptService;
 use App\Events\UserRegistered;
 use App\Http\Requests\LoginRequest;
