@@ -1,7 +1,6 @@
 <?php
 
 namespace Database\Factories;
-//laravel
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
