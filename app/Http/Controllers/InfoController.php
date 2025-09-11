@@ -11,6 +11,7 @@ use App\Business\Services\HiService;
 use App\Business\Services\ProductService;
 use App\Business\Services\SingletonService;
 use App\Business\Services\UserService;
+use App\ExternalService\ApiService;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -80,5 +81,4 @@ class InfoController extends Controller
             "finalPrice" => $this->calculateProductPriceService->calculateProductPrice($product)
         ]);
     }
-    
 }

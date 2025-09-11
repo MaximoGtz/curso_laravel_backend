@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\ProductController;
@@ -31,3 +32,4 @@ Route::get("/encrypt/email2/{id}", [InfoController::class, "encryptEmail2"]);
 Route::get("/info/singleton", [InfoController::class, "singleton"]);
 Route::get ("/getProductPrice/{product_id}", [ProductController::class, "getProductPrice"]);
 Route::get ("/getProductPrice2/{product_id}", [InfoController::class, "getPartnerPrice"]);
+Route::get("/api", [ApiController::class, "get"]);
