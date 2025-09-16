@@ -2,6 +2,7 @@
 
 namespace App\ExternalService;
 // Con esto podemos hacer solicitudes http
+use App\ExternalService\Events\DataGet;
 use Illuminate\Support\Facades\Http;
 class ApiService
 {
@@ -15,6 +16,7 @@ class ApiService
         // $response2 = Http::withoutVerifying()->get($this->url);
         $response = Http::get($this->url);
         if($response->successful()){
+            event(new DataGet($response->json()));
             return $response->json();
         }else{
             return ["error" => "No se pudo consultar correctamente"];
