@@ -1,9 +1,6 @@
 <?php
 
 namespace App\Providers;
-// Un comentario sin mas lol
-
-// Ando haciendo otro comentario por si acaso
 use App\ExternalService\ApiService;
 use Illuminate\Support\ServiceProvider;
 
