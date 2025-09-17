@@ -35,7 +35,9 @@ return [
         ],
     ],
     'api' => [
-        'url' => env("API_URL")
+        'url' => env("API_URL"),
+        'rick_and_morty_api' => env("RICK_AND_MORTY_API"),
+        'poke_api' => env("POKE_API")
     ],
 
 ];
