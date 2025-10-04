@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
-
+// Puta risa castrosa tienes mija la neta
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
