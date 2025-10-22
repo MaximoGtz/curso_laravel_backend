@@ -8,6 +8,7 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     * I would like to practice my backend development using laravel
      */
     public function up(): void
     {
