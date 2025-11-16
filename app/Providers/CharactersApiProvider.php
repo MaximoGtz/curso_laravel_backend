@@ -20,6 +20,6 @@ class CharactersApiProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Route::get()
+        
     }
 }

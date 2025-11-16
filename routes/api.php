@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CesarController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TestController;
@@ -33,3 +34,6 @@ Route::get("/info/singleton", [InfoController::class, "singleton"]);
 Route::get ("/getProductPrice/{product_id}", [ProductController::class, "getProductPrice"]);
 Route::get ("/getProductPrice2/{product_id}", [InfoController::class, "getPartnerPrice"]);
 Route::get("/api", [ApiController::class, "get"]);
+
+Route::get('/cesar/encrypt/{data}/{shift?}', [CesarController::class, 'encrypt']);
+Route::get('/cesar/decrypt/{data}/{shift?}', [CesarController::class, 'decrypt']);
