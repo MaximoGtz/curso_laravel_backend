@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Listeners;
-
+//comment laravel
 use App\Events\UserRegistered;
 use Exception;
 use Illuminate\Contracts\Queue\ShouldQueue;
