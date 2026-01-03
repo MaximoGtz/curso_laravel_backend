@@ -17,8 +17,8 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 //ESCRIBE ESTO CUANDO NO USES ALIAS EN LOS MIDDLEWARES
 // Route::apiResource("/products", ProductController::class)->middleware([CheckValueInHeader::class, UpperCase::class]);
-//commentario para hacer un push
 Route::middleware("jwt.auth")->group(function(){
+//commentario para hacer un push
     Route::get("/who", [AuthController::class, "who"]);
     Route::post("/logout", [AuthController::class, "logout"]);
     Route::post("/refresh", [AuthController::class,"refresh"]);
