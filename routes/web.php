@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 //Laravel
-//laravel2
 Route::get('/', function () {
+//laravel2
     return view('welcome');
 });
