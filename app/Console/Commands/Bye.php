@@ -11,7 +11,7 @@ class Bye extends Command
      *
      * @var string
      */
-    protected $signature = 'app:bye {name} {--lenguage=} {--rude}';
+    protected $signature = 'app:bye {name} {--lenguage= : You can choose english or spanish} {--rude : You can choose if you want a rude bye}';
 
     /**
      * The console command description.
