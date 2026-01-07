@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Factories;
-
+// cclient factory
 use App\Models\Client;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
