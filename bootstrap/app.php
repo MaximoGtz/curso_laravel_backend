@@ -3,6 +3,7 @@
 use App\Http\Middleware\CheckValueInHeader;
 use App\Http\Middleware\LogRequest;
 use App\Http\Middleware\UpperCase;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -24,6 +25,9 @@ return Application::configure(basePath: dirname(__DIR__))
             "log_request" => LogRequest::class
         ]);
     })
-    ->withExceptions(function (Exceptions $exceptions) {
-        //
-    })->create();
+    ->withExceptions(function (Exceptions $exceptions) {})
+    // we can add task that execute automatically whenever you want
+    ->withSchedule(function (Schedule $schedule){
+        $schedule->command("maintenance:clear-old-uploads")->everyMinute();
+    })
+    ->create();
