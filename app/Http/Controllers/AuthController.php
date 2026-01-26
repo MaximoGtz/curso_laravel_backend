@@ -13,6 +13,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 class AuthController extends Controller
 {
+    // ramon joton
     public function __construct(protected EncryptService $encryptService) {
     }
     public function register(UserRequest $request ){
